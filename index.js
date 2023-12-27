@@ -67,7 +67,7 @@ app.post('/addnews', (req, res) => {
       return res.send("error");
     }
   });
-  app.patch("/updateDayTourDetails/:id", async (req, res) => {
+  app.patch("/updateNews/:id", async (req, res) => {
     try {
       const id = req.params.id;
       const newss = await news.findOneAndUpdate({ _id: id }, req.body, {
@@ -81,7 +81,7 @@ app.post('/addnews', (req, res) => {
       return res.send("error");
     }
   });
-  app.delete("/deleteDayTour/:id", async (req, res) => {
+  app.delete("/deleteNews/:id", async (req, res) => {
     const id = req.params.id;
     try {
       const newss = await news.deleteOne({ _id: id });
