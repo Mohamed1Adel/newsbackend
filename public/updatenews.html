@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<!-- <p class="id"></p>
+<p class="title"></p>
+<p class="img"></p>
+<p class="content"></p> -->
+
+
+<form method="POST">
+    <input type="text" name="title" class="title">
+    <input type="text" name="imageURl" class="img">
+    <input type="text" name="newsContent" class="content">
+    <button type="submit">update</button>
+</form>
+
+
+<script>
+    const searchParams = new URLSearchParams(window.location.search);
+    console.log(searchParams.has("id"));
+    console.log(searchParams.get("id"));
+
+    const getItemById = async ()=>{
+        const response = await fetch(`https://newsbackend-two.vercel.app/getNews/${searchParams.get("id")}`);
+        const data =await response.json();
+        console.log(data);
+        // document.querySelector(".id").value = data._id;
+        document.querySelector(".title").value = data.title;
+        document.querySelector(".img").value = data.imageURl;
+        document.querySelector(".content").value = data.newsContent;
+        document.querySelector("form").action = `/updateNews/${data._id}?_method=PATCH`;
+    }
+getItemById()
+</script>
+</body>
+</html>

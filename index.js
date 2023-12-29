@@ -14,7 +14,7 @@ const app = express();
 // const TransportationSliderImages = require("./models/transportationSliderImages");
 // const HajjOmrahSliderImages = require("./models/hajjOmrahSliderImages");
 const news = require("./models/newsmodal");
-
+// app.use(methodOverride('_method'));
 // const Program = require("./models/program");
 app.use(cors());
 app.use(compression());
