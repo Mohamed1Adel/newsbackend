@@ -4,6 +4,9 @@ const newsSchema = mongoose.Schema({
   title: String,
   imageURl: String,
   newsContent: String,
+  slide:String,
+  date:String,
+  writer:String
 
 });
 

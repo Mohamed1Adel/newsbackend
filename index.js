@@ -1,27 +1,17 @@
 require("dotenv").config();
-
 const express = require("express");
 const cors = require("cors");
 const compression = require("compression");
 var bodyParser = require("body-parser");
 const app = express();
-// const DayTour = require("./models/dayTour");
-// const Domestic = require("./models/domestic");
-// const HajjOmrah = require("./models/hajjOmrah");
-// const NileCruise = require("./models/nileCruise");
-// const Outbound = require("./models/outbound");
-// const MainSliderImages = require("./models/mainSliderImages");
-// const TransportationSliderImages = require("./models/transportationSliderImages");
-// const HajjOmrahSliderImages = require("./models/hajjOmrahSliderImages");
 const news = require("./models/newsmodal");
-// app.use(methodOverride('_method'));
-// const Program = require("./models/program");
+
 app.use(cors());
 app.use(compression());
 app.use(bodyParser.json({ limit: "35mb" }));
 const port = process.env.PORT || 3000;
 const mongoose = require("mongoose");
-// const Login = require("./models/Login");
+const Login = require("./models/Login");
 app.use(
   bodyParser.urlencoded({
     extended: true,
@@ -100,21 +90,21 @@ app.post('/addnews', (req, res) => {
 //   // res.sendFile("./views/home.html", { root: __dirname });
 // });
 
-// app.post("/login",async(req,res)=>{
-//   const {userName,password} = req.body;
+app.post("/login",async(req,res)=>{
+  const {userName,password} = req.body;
 
-//   try{
-//     const check = await Login.findOne({userName:userName,password:password});
-//     if(check){
-//       res.json("exist")
-//     }else{
-//       res.json("notexist")
+  try{
+    const check = await Login.findOne({userName:userName,password:password});
+    if(check){
+      res.json("exist")
+    }else{
+      res.json("notexist")
       
-//     }
-//   }catch(e){
-//     res.json("notexist")
-//   }
-// })
+    }
+  }catch(e){
+    res.json("notexist")
+  }
+})
 
 // app.post("/", (req, res) => {
 //   // res.send("Hello world!");
