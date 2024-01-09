@@ -2,12 +2,10 @@ const mongoose = require("mongoose");
 
 const LoginSchema = mongoose.Schema({
     userName:{
-       type: String,
-        required:true
+       type: String
     },
     password:{
-       type: String,
-        required:true
+       type: String
     },
 
 })
