@@ -11,7 +11,7 @@ app.use(compression());
 app.use(bodyParser.json({ limit: "35mb" }));
 const port = process.env.PORT || 3000;
 const mongoose = require("mongoose");
-const Login = require("./models/Login");
+// const Login = require("./models/Login");
 app.use(
   bodyParser.urlencoded({
     extended: true,
@@ -90,26 +90,21 @@ app.post('/addnews', (req, res) => {
 //   // res.sendFile("./views/home.html", { root: __dirname });
 // });
 
-  app.get("/login", async (req, res) => {
-    const logins = await Login.find();
-    res.json(logins);
-  });
+// app.post("/login",async(req,res)=>{
+//   const {userName,password} = req.body;
 
-app.post("/login",async(req,res)=>{
-  const {userName,password} = req.body;
-
-  try{
-    const check = await Login.findOne({userName:userName,password:password});
-    if(check){
-      res.json("exist")
-    }else{
-      res.json("notexist")
+//   try{
+//     const check = await Login.findOne({userName:userName,password:password});
+//     if(check){
+//       res.json("exist")
+//     }else{
+//       res.json("notexist")
       
-    }
-  }catch(e){
-    res.json("notexist")
-  }
-})
+//     }
+//   }catch(e){
+//     res.json("notexist")
+//   }
+// })
 
 // app.post("/", (req, res) => {
 //   // res.send("Hello world!");
