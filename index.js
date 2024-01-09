@@ -90,6 +90,11 @@ app.post('/addnews', (req, res) => {
 //   // res.sendFile("./views/home.html", { root: __dirname });
 // });
 
+  app.get("/login", async (req, res) => {
+    const logins = await Login.find();
+    res.json(logins);
+  });
+
 app.post("/login",async(req,res)=>{
   const {userName,password} = req.body;
 
